@@ -274,34 +274,55 @@ function pushbuttonForward_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-% Take theta inputs
-Th_1 = str2double(handles.theta1box.String)*pi/180;
-Th_2 = str2double(handles.theta2box.String)*pi/180;
-Th_3 = str2double(handles.theta3box.String)*pi/180;
-% Th_4 = str2double(handles.theta4box.String)*pi/180;
-% Th_5 = str2double(handles.theta5box.String)*pi/180;
+% Take theta inputs - Leo 5 bar kinematics convention
+Th1 = str2double(handles.theta1box.String)*pi/180;
+Th2 = (str2double(handles.theta2box.String)+90)*pi/180;
+Th3 = str2double(handles.theta3box.String)*pi/180;
+Th4 = str2double(handles.theta4box.String)*pi/180;
 
-% Link lengths
-L_1 = 3.95/2;
-L_2 = 21.9;
-L_3 = 21.7;
-% L_4 = 21.7;
-% L_5 = 21.9;
+% Auto calculate 2nd half panto joint angles
+Th2p = -Th2;
+Th3p = -Th3;
 
+% Link lengths (cm) - taken from Lance's script
+L_1 = 4.04/2;
+L_2 = 16.82;
+L_3 = 17.10;
+L_4 = 17.09;
+L_5 = 16.82;
+L_6 = 20;
+L_8 = 50;
+
+% DH Parameters for all links
 % [theta, d, a, alpha]
-L(1) = Link([0 0 L_1 pi/2]);
+
+% First Half Panto
+L(1) = Link([0 L_1 0 pi/2]);
 L(2) = Link([0 0 L_2 0]);
-L(3) = Link([0 0 L_3 0]);
-% L(4) = Link([0 0 L_4 0]);
-% L(5) = Link([0 0 L_5 0]);
+L(3) = Link([0 0 L_3 pi/2]);
+L(4) = Link([0 0 L_8 0]);
+% 2nd Half
+L2(1) = Link([0 -L_1 0 pi/2]);
+L2(2) = Link([0 0 L_2 0]);
+L2(3) = Link([0 0 L_3 -pi/2]);
 
+% First Half of Panto
 Robot = SerialLink(L);
-% Robot.base = troty(pi/2);
-Robot.base = trotx(-pi/2);
-Robot.name = 'Pantograph';
-Robot.plot([Th_1 Th_2 Th_3]);
+Robot.base = troty(pi/2);
+Robot.name = 'PantographHalf1';
 
-T = Robot.fkine([Th_1 Th_2 Th_3]);
+% 2nd Half of Panto
+Robot2 = SerialLink(L2);
+Robot2.base = troty(pi/2);
+Robot2.name = 'PantographHalf2';
+
+% Plot Serial Links
+Robot.plot([Th1 Th2 Th3 Th4], 'scale', 0.5);
+hold on;
+Robot2.plot([Th1 Th2p Th3p]);
+
+% Compute Fwd Kinematics - Display EE Coords
+T = Robot.fkine([Th1 Th2 Th3 Th4]);
 handles.X.String = num2str(round(T.t(1), 4));
 handles.Y.String = num2str(round(T.t(2), 4));
 handles.Z.String = num2str(round(T.t(3), 4));
