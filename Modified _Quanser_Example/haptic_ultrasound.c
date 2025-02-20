@@ -25,6 +25,11 @@
     
 #include "haptic_ultrasound_example.h"
 #include "haptic_ultrasound.h"
+#include <math.h>
+#include "hil.h"
+#include "quanser_signal.h"
+#include "quanser_messages.h"
+#include "quanser_thread.h"
 
 struct limiter_state
 {

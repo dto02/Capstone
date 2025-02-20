@@ -12,7 +12,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-#include "hil.h"
-#include "quanser_signal.h"
-#include "quanser_messages.h"
-#include "quanser_thread.h"
+//#include "hil.h"
+//#include "quanser_signal.h"
+//#include "quanser_messages.h"
+//#include "quanser_thread.h"
