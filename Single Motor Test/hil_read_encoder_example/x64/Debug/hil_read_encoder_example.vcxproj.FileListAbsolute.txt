@@ -2,3 +2,4 @@ C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\Controller Design\quanser_sdk_exam
 C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Encoder Test\hil_read_encoder_example\x64\Debug\hil_read_encoder_example.exe
 C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Encoder Test\hil_read_encoder_example\x64\Debug\hil_read_encoder_example.exe
 C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Single Motor Test\hil_read_encoder_example\x64\Debug\singleMotorProportionalControl.exe
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Single Motor Test\hil_read_encoder_example\x64\Debug\singleMotorProportionalControl.exe

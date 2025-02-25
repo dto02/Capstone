@@ -161,7 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="singleMotorPosTest.c" />
+    <ClCompile Include="singleMotorPosTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hil_read_encoder_example.h" />
