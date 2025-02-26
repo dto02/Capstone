@@ -9,10 +9,13 @@
 #include "quanser_signal.h"
 #include "quanser_messages.h"
 #include "quanser_thread.h"
+#include <tuple>
+
+using t_int32 = int;
 
 constexpr const char* BOARD_TYPE = "q8_usb";
 constexpr const char* BOARD_ID = "0";
-constexpr int NUM_CHANNELS = 1;
+constexpr int NUM_CHANNELS = 6;
 
 // Global variables for cleanup
 t_card board;
@@ -24,6 +27,15 @@ void signalHandler(int signal) {
     hil_write_analog(board, nullptr, NUM_CHANNELS, voltages); // Write 0V to analog output
     hil_close(board); // Close the board
     std::exit(signal); // Exit the program
+}
+
+std::tuple<int, int, int> fKinematics(const t_double degrees[NUM_CHANNELS]) {
+    int x = 1;
+    int y = 2;
+    int z = 3;
+
+    // Return tuple
+    return std::make_tuple(x, y, z);
 }
 
 int main(int argc, char* argv[])
@@ -75,7 +87,9 @@ int main(int argc, char* argv[])
     }
 
     // Set output voltage to send to analog out
-    voltages[NUM_CHANNELS - 1] = 1.0; // Set channel 0 to 1V
+    for (int i = 0; i < NUM_CHANNELS; i++) {
+        voltages[NUM_CHANNELS - i] = 1.0; // Set channel 0 to 1V
+    }
 
     // Write voltage to analog out
     result = hil_write_analog(board, channels, NUM_CHANNELS, voltages);
@@ -101,6 +115,14 @@ int main(int argc, char* argv[])
         degrees[0] = static_cast<double>(counts[0]) * (360.0 / (5000.0 * 4.0));
         std::cout << "ENC #0: " << degrees[0] << " degrees, " << counts[0] << " counts\n";
 
+        //Position Control Forward Kinematics Function
+        std::tuple<int, int, int> result = fKinematics(degrees);
+
+        // Get values from the tuple
+        int x, y, z;
+        std::tie(x, y, z) = result;
+        std::cout << "x: " << x << ", y: " << y << ", z: " << z << std::endl;
+
         // Check for 'q' key press (non-blocking)
         if (_kbhit()) { // Check if a key is pressed
             char key = _getch(); // Get the pressed key
@@ -111,7 +133,10 @@ int main(int argc, char* argv[])
     }
 
     // Cleanup: Set voltage to 0V and close the board
-    voltages[NUM_CHANNELS - 1] = 0.0; // Set channel 0 to 0V
+    for (int i = 0; i < NUM_CHANNELS; i++) {
+        voltages[i] = 0.0;
+    }
+
     result = hil_write_analog(board, channels, NUM_CHANNELS, voltages);
     if (result < 0) {
         msg_get_error_message(nullptr, result, &message[0], message.size());
@@ -125,3 +150,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+

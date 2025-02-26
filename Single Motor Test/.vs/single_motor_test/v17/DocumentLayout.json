@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Derek To\\OneDrive - UBC\\YEAR 4\\MECH 458\\T20  RCL_Ultrasound Haptic Feedback Device\\Capstone\\Single Motor Test\\",
+  "WorkspaceRootPath": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|C:\\Users\\Derek To\\OneDrive - UBC\\YEAR 4\\MECH 458\\T20  RCL_Ultrasound Haptic Feedback Device\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|solutionrelative:hil_read_encoder_example\\singleMotorPosTest.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0022C8EE-5718-4558-A404-CFD3ED61B91E}|haptic_wand_example\\haptic_wand_example.vcxproj|C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0022C8EE-5718-4558-A404-CFD3ED61B91E}|haptic_wand_example\\haptic_wand_example.vcxproj|solutionrelative:hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,38 +14,20 @@
       "DocumentGroups": [
         {
           "DockedHeight": 250,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "singleMotorPosTest.c",
-              "DocumentMoniker": "C:\\Users\\Derek To\\OneDrive - UBC\\YEAR 4\\MECH 458\\T20  RCL_Ultrasound Haptic Feedback Device\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.c",
-              "RelativeDocumentMoniker": "hil_read_encoder_example\\singleMotorPosTest.c",
-              "ToolTip": "C:\\Users\\Derek To\\OneDrive - UBC\\YEAR 4\\MECH 458\\T20  RCL_Ultrasound Haptic Feedback Device\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.c",
-              "RelativeToolTip": "hil_read_encoder_example\\singleMotorPosTest.c",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-02-23T01:08:57.502Z",
+              "Title": "singleMotorPosTest.cpp",
+              "DocumentMoniker": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp",
+              "RelativeDocumentMoniker": "hil_read_encoder_example\\singleMotorPosTest.cpp",
+              "ToolTip": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp",
+              "RelativeToolTip": "hil_read_encoder_example\\singleMotorPosTest.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-26T01:31:06.235Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedHeight": 42,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

@@ -23,7 +23,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="haptic_wand_example.c">
+    <ClCompile Include="..\hil_read_encoder_example\singleMotorPosTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
