@@ -111,7 +111,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(QSDK_DIR)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone;$(QSDK_DIR)include;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics\Kinematics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,9 +162,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Kinematics\Kinematics\Kinematics.cpp" />
     <ClCompile Include="singleMotorPosTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Kinematics\Kinematics\transformations.h" />
     <ClInclude Include="hil_read_encoder_example.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

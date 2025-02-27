@@ -18,9 +18,15 @@
     <ClCompile Include="singleMotorPosTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Kinematics\Kinematics\Kinematics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hil_read_encoder_example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Kinematics\Kinematics\transformations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
