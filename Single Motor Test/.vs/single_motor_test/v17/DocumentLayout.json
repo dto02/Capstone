@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0022C8EE-5718-4558-A404-CFD3ED61B91E}|haptic_wand_example\\haptic_wand_example.vcxproj|C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{0022C8EE-5718-4558-A404-CFD3ED61B91E}|haptic_wand_example\\haptic_wand_example.vcxproj|solutionrelative:hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|solutionrelative:hil_read_encoder_example\\singleMotorPosTest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\transformations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2ED9687-92A4-419E-9C2C-BB0889F038DD}|hil_read_encoder_example\\hil_read_encoder_example.vcxproj|solutionrelative:hil_read_encoder_example\\transformations.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +28,22 @@
               "RelativeDocumentMoniker": "hil_read_encoder_example\\singleMotorPosTest.cpp",
               "ToolTip": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\singleMotorPosTest.cpp",
               "RelativeToolTip": "hil_read_encoder_example\\singleMotorPosTest.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAQwIUAAABmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-02-26T01:31:06.235Z",
+              "WhenOpened": "2025-02-27T22:56:58.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "transformations.h",
+              "DocumentMoniker": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\transformations.h",
+              "RelativeDocumentMoniker": "hil_read_encoder_example\\transformations.h",
+              "ToolTip": "C:\\Users\\tmlis\\Documents\\GitHub\\Capstone\\Single Motor Test\\hil_read_encoder_example\\transformations.h",
+              "RelativeToolTip": "hil_read_encoder_example\\transformations.h",
+              "ViewState": "AgIAAPoAAAAAAAAAAAAAAAIBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-02-27T22:50:58.058Z",
               "EditorCaption": ""
             }
           ]
