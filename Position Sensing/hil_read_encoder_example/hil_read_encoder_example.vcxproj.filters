@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PositionSensing.cpp">
+    <ClCompile Include="XYZ_coordinateTesting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
