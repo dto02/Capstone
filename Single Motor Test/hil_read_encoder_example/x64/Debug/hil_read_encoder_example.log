@@ -1,5 +1,2 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (hil_read_encoder_example.vcxproj, singleMotor.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  singleMotorPosTest.cpp
-C:\Users\tmlis\Documents\GitHub\Capstone\Single Motor Test\hil_read_encoder_example\singleMotorPosTest.cpp(79,90): warning C4267: 'argument': conversion from 'size_t' to 't_uint32', possible loss of data
-C:\Users\tmlis\Documents\GitHub\Capstone\Single Motor Test\hil_read_encoder_example\singleMotorPosTest.cpp(62,12): warning C4101: 'task': unreferenced local variable
   hil_read_encoder_example.vcxproj -> C:\Users\tmlis\Documents\GitHub\Capstone\Single Motor Test\hil_read_encoder_example\x64\Debug\singleMotorProportionalControl.exe

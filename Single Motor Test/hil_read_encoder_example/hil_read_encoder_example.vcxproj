@@ -162,11 +162,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Kinematics\Kinematics\Kinematics.cpp" />
     <ClCompile Include="singleMotorPosTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Kinematics\Kinematics\transformations.h" />
     <ClInclude Include="hil_read_encoder_example.h" />
     <ClInclude Include="transformations.h" />
   </ItemGroup>
