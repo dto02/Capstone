@@ -175,13 +175,13 @@ void printCoordinateFrame(const std::string& name, const std::vector<std::vector
 // From Kinematics.cpp
 
 // Length Parameters
-double l1 = 4.04 / 2.0;  // Half of distance between panto motors
-double l2 = 16.820;      // Motor to elbow linkage length
-double l5 = 16.820;      // Motor to elbow linkage length (duplicate value)
-double l3 = 17.09;       // Elbow to tip linkage length
-double l4 = 17.09;       // Elbow to tip linkage length (duplicate value)
-double l6 = 20;          // Half of distance between shoulder motors
-double l8 = 20;
+double l1 = 4.45 / 2.0;  // Half of distance between panto motors
+double l2 = 14.3;        // Motor to elbow linkage length
+double l5 = 14.3;        // Motor to elbow linkage length (duplicate value)
+double l3 = 19.3;        // Elbow to tip linkage length
+double l4 = 19.3;        // Elbow to tip linkage length (duplicate value)
+double l6 = 17.7 / 2.0;        // Half of distance between shoulder motors
+double l8 = 17.7 / 2.0;
 
 double computeTheta3(double theta2, double q2) {
     theta2 = theta2 * M_PI / 180.0;

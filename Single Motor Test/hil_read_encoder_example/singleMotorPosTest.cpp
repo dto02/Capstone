@@ -123,15 +123,25 @@ int main(int argc, char* argv[])
 
         for (int i = 0; i < NUM_CHANNELS; i++) {
             degrees[i] = static_cast<double>(counts[i]) * (360.0 / (5000.0 * 4.0));
+
+        }
+
+        degrees[0] = degrees[0] + 90;
+        degrees[1] = degrees[1];
+        degrees[2] = degrees[2] + 180;
+        degrees[3] = degrees[3] + 90;
+        degrees[4] = degrees[4];
+        degrees[5] = degrees[5] + 180;
+
+        for (int i = 0; i < NUM_CHANNELS; i++) {
             std::cout << "ENC #" << i << ": " << degrees[i] << " degrees, " << counts[i] << " counts\n";
         }
-        //degrees[0] = degrees[0] + 90;
 
         // Call computeTransformedXYZ with 6 encoder angles and 1 EE encoder (set to 0)
         //std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q2,
         //double theta1p, double theta2p, double q2p, double theta4)
         std::vector<double> transformedXYZ = computeTransformedXYZ(
-            degrees[0] + 90, degrees[1] + 45, degrees[2] + 135, degrees[3] + 90, degrees[4] + 45, degrees[5] + 135, 0);
+            degrees[0], degrees[1], degrees[2], degrees[3], degrees[4], degrees[5], 0);
 
         // Print the transformed coordinates
         std::cout << "Transformed XYZ: [";
