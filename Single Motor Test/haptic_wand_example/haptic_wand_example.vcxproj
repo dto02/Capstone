@@ -160,6 +160,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Kinematics\Kinematics\transformations.h" />
     <ClInclude Include="haptic_wand.h" />
     <ClInclude Include="haptic_wand_example.h" />
   </ItemGroup>

@@ -1,0 +1,5 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (hil_read_encoder_example.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  PositionSensing.cpp
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Position Sensing\hil_read_encoder_example\PositionSensing.cpp(63,12): warning C4101: 'task': unreferenced local variable
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Position Sensing\hil_read_encoder_example\PositionSensing.cpp(56,14): warning C4101: 'degrees': unreferenced local variable
+  hil_read_encoder_example.vcxproj -> C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Position Sensing\hil_read_encoder_example\x64\Debug\MotorPositionSensing.exe

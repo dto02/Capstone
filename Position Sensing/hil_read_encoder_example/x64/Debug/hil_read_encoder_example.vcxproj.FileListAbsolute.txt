@@ -1,0 +1,5 @@
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\Controller Design\quanser_sdk_examples-main\quanser_sdk_examples-main\C\hardware\hil_read_encoder_example\x64\Debug\hil_read_encoder_example.exe
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Encoder Test\hil_read_encoder_example\x64\Debug\hil_read_encoder_example.exe
+C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Encoder Test\hil_read_encoder_example\x64\Debug\hil_read_encoder_example.exe
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\Controller Design\Position Sensing\hil_read_encoder_example\x64\Debug\MotorPositionSensing.exe
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Position Sensing\hil_read_encoder_example\x64\Debug\MotorPositionSensing.exe
