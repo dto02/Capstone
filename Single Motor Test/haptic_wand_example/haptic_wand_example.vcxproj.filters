@@ -21,6 +21,9 @@
     <ClInclude Include="haptic_wand_example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Kinematics\Kinematics\transformations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\hil_read_encoder_example\singleMotorPosTest.cpp">
