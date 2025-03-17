@@ -1,4 +1,2 @@
-﻿  Single_Motor_Control.c
-Single_Motor_Control.obj : error LNK2005: main already defined in haptic_ultrasound.obj
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-x64\Debug\haptic_wand_example.exe : fatal error LNK1169: one or more multiply defined symbols found
+﻿  haptic_ultrasound.c
+C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Modified _Quanser_Example\haptic_ultrasound.c(29,10): fatal  error C1083: Cannot open include file: 'hil.h': No such file or directory

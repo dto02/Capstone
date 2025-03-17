@@ -1,9 +1,13 @@
+#include "hil_read_encoder_example.h"
 #include <iostream>
 #include <string>
 #include <cmath>
 #include <csignal>
 #include <cstdlib>
 #include <conio.h> // For kbhit() and getch() on Windows
+#include <stdio.h>
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include "hil.h"
 #include "quanser_signal.h"
 #include "quanser_messages.h"
@@ -129,13 +133,20 @@ int main(int argc, char* argv[])
         degrees[0] = degrees[0] + 90;
         degrees[1] = degrees[1];
         degrees[2] = degrees[2] + 180;
-        degrees[3] = degrees[3] + 90;
+        degrees[3] = 90 - degrees[3];
         degrees[4] = degrees[4];
         degrees[5] = degrees[5] + 180;
 
         for (int i = 0; i < NUM_CHANNELS; i++) {
             std::cout << "ENC #" << i << ": " << degrees[i] << " degrees, " << counts[i] << " counts\n";
         }
+
+        // Define a 6x1 wrench vector (Fx, Fy, Fz, Tx, Ty, Tz)
+        std::vector<double> W = { 2, 3, 0, 0, 0, 0.2 };
+
+        // Construct J matrix (7x6)
+        auto JT = computeJointTorques(W);
+        printVector("JT", JT);
 
         // Call computeTransformedXYZ with 6 encoder angles and 1 EE encoder (set to 0)
         //std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q2,
@@ -150,19 +161,7 @@ int main(int argc, char* argv[])
             if (i < transformedXYZ.size() - 1) std::cout << ", ";
         }
         std::cout << "]\n";
-        std::this_thread::sleep_for(1s);
-
-        //
-
-
-
-        ////Position Control Forward Kinematics Function
-        //std::tuple<int, int, int> result = fKinematics(degrees);
-
-        //// Get values from the tuple
-        //int x, y, z;
-        //std::tie(x, y, z) = result;
-        //std::cout << "x: " << x << ", y: " << y << ", z: " << z << std::endl;
+        std::this_thread::sleep_for(500ms);
 
         std::cout << "]\n";
         // Check for 'q' key press (non-blocking)

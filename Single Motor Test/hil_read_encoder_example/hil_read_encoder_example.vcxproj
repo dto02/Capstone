@@ -111,13 +111,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone;$(QSDK_DIR)include;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics\Kinematics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Single Motor Test\hil_read_encoder_example;C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone;$(QSDK_DIR)include;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics\Kinematics;C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics\Kinematics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone\Kinematics;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(QSDK_DIR)lib\win64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QSDK_DIR)lib\win64;C:\Users\Derek To\OneDrive - UBC\YEAR 4\MECH 458\T20  RCL_Ultrasound Haptic Feedback Device\Capstone;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>hil.lib;quanser_runtime.lib;quanser_common.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -165,6 +165,13 @@
     <ClCompile Include="singleMotorPosTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Quanser\Quanser SDK\include\hil.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Quanser\Quanser SDK\include\quanser_messages.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Quanser\Quanser SDK\include\quanser_signal.h" />
+    <ClInclude Include="..\..\..\..\..\..\..\..\..\Program Files\Quanser\Quanser SDK\include\quanser_thread.h" />
     <ClInclude Include="hil_read_encoder_example.h" />
     <ClInclude Include="transformations.h" />
   </ItemGroup>
