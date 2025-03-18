@@ -152,9 +152,19 @@ int main(int argc, char* argv[])
             initial_count = counts[0];
             first_reading = false;
         }
-
         for (int i = 0; i < NUM_CHANNELS; i++) {
             degrees[i] = static_cast<double>(counts[i]) * (360.0 / (5000.0 * 4.0));
+
+        }
+
+        degrees[0] = degrees[0] + 90;
+        degrees[1] = degrees[1];
+        degrees[2] = degrees[2] + 180;
+        degrees[3] = 90 - degrees[3];
+        degrees[4] = degrees[4];
+        degrees[5] = degrees[5] + 180;
+
+        for (int i = 0; i < NUM_CHANNELS; i++) {
             std::cout << "ENC #" << i << ": " << degrees[i] << " degrees, " << counts[i] << " counts\n";
         }
 
