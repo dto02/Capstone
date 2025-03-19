@@ -214,7 +214,13 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     Transformb6 = multiplyMatrices(Transformb5, Transform56);
     printCoordinateFrame("Transformb6", Transformb6);
 
-    return { Transformb6[0][3], Transformb6[1][3], Transformb6[2][3] };
+    // Variables to store computed angles
+    double yaw, pitch, roll;
+
+    // Compute Euler Angles
+    std::vector<double> eulerAngles = computeEulerAngles(Transformb6);
+
+    return { Transformb6[0][3], Transformb6[1][3], Transformb6[2][3], eulerAngles[0], eulerAngles[1], eulerAngles[2] };
 }
 
 // Function to compute the T7 matrix
@@ -416,7 +422,7 @@ std::vector<double> computeJointTorques(const std::vector<double> globalwrench) 
 int main()
 {
     // Example input parameters (you can change these as needed)
-    val1 = 90 + 45, val2 = -40, val3 = 25, val4 = 90 - 45, val5 = 180 - 25, val6 = 180 + 40, val7 = 0;
+    val1 = 90, val2 = 30, val3 = 180 - 60, val4 = 90, val5 = 30, val6 = 180 - 60, val7 = -58.5 + 10;
 
     //double theta1, double theta2, double q2, double theta1p, double theta2p, double q2p,  double theta4
 
@@ -424,10 +430,16 @@ int main()
     std::vector<double> result = computeTransformedXYZ(val1, val2, val3, val4, val5, val6, val7);
 
     // Output the resulting x, y, and z values
-    std::cout << "Transformed Coordinates:" << std::endl;
+    std::cout << "\n" << "Transformed Coordinates:" << std::endl;
     std::cout << "X: " << result[0] << std::endl;
     std::cout << "Y: " << result[1] << std::endl;
-    std::cout << "Z: " << result[2] << std::endl;
+    std::cout << "Z: " << result[2] << "\n" << std::endl;
+
+    // Display results
+    std::cout << "Rotation Angles:" << std::endl;
+    std::cout << "Yaw (Z-axis): " << result[3] << " degrees" << std::endl;
+    std::cout << "Pitch (Y-axis): " << result[4] << " degrees" << std::endl;
+    std::cout << "Roll (X-axis): " << result[5] << " degrees" << "\n" << std::endl;
 
     // Define a 6x1 wrench vector (Fx, Fy, Fz, Tx, Ty, Tz)
     std::vector<double> W = { 2, 3, 0, 0, 0, 0.2 };

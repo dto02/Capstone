@@ -6,10 +6,12 @@
 #include <iomanip>
 #include <vector>
 #include <string>
+#include <vector>
 
 // Define M_PI if not defined
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
+#define RAD2DEG(x) ((x) * 180.0 / M_PI)
 #endif
 
 // Round very small values to zero
@@ -357,5 +359,23 @@ void printVector(const std::string& name, const std::vector<double>& vec) {
     }
     std::cout << "]\n";
 }
+
+// Function to compute Euler angles (Yaw, Pitch, Roll) from a rotation matrix
+std::vector<double> computeEulerAngles(const std::vector<std::vector<double>>& R) {
+    double yaw, pitch, roll;
+
+    // Yaw (Rotation around Z-axis)
+    yaw = atan2(R[1][0], R[0][0]);
+
+    // Pitch (Rotation around Y-axis)
+    double sin_pitch = -R[2][0];
+    double cos_pitch = sqrt(R[2][1] * R[2][1] + R[2][2] * R[2][2]);
+    pitch = atan2(sin_pitch, cos_pitch);
+
+    // Roll (Rotation around X-axis)
+    roll = atan2(R[2][1], R[2][2]);
+
+    // Convert angles from radians to degrees
+    return { RAD2DEG(yaw), RAD2DEG(pitch), RAD2DEG(roll) };
+}
 #endif // TRANSFORMATIONS_H
-#pragma once
