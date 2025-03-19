@@ -473,10 +473,10 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     Transformb3 = std::get<3>(transform5bar);
 
     // Print each transformation step
-    printCoordinateFrame("Transformb0", Transformb0);
-    printCoordinateFrame("Transformb1", Transformb1);
-    printCoordinateFrame("Transformb2", Transformb2);
-    printCoordinateFrame("Transformb3", Transformb3);
+    //printCoordinateFrame("Transformb0", Transformb0);
+    //printCoordinateFrame("Transformb1", Transformb1);
+    //printCoordinateFrame("Transformb2", Transformb2);
+    //printCoordinateFrame("Transformb3", Transformb3);
 
     std::tuple<std::vector<std::vector<double>>, std::vector<std::vector<double>>,
         std::vector<std::vector<double>>, std::vector<std::vector<double>>>
@@ -499,10 +499,10 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     Transformb3p = multiplyMatrices(Transformbp, Transformb3p);
 
     // Print each transformation step
-    printCoordinateFrame("Transformb0p", Transformb0p);
-    printCoordinateFrame("Transformb1p", Transformb1p);
-    printCoordinateFrame("Transformb2p", Transformb2p);
-    printCoordinateFrame("Transformb3p", Transformb3p);
+    //printCoordinateFrame("Transformb0p", Transformb0p);
+    //printCoordinateFrame("Transformb1p", Transformb1p);
+    //printCoordinateFrame("Transformb2p", Transformb2p);
+    //printCoordinateFrame("Transformb3p", Transformb3p);
 
     // Now continue with the rest of the transformations
     auto C3_4 = eul2rotm(-90, 0, theta4);
@@ -512,7 +512,7 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     createTransformationMatrix(C3_4, Tb4, Transform34);
     Transformb4 = multiplyMatrices(Transformb3, Transform34); // Just an example
 
-    printCoordinateFrame("Transformb4", Transformb4);
+    //printCoordinateFrame("Transformb4", Transformb4);
 
 
     std::vector<double> frame3pXYZ = { Transformb3p[0][3], Transformb3p[1][3], Transformb3p[2][3] };
@@ -548,7 +548,7 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     std::vector<std::vector<double>> Transform45;
     createTransformationMatrix(C4_5, { {0.0}, {0.0}, {0.0} }, Transform45);
     Transformb5 = multiplyMatrices(Transformb4, Transform45);
-    printCoordinateFrame("Transformb5", Transformb5);
+    //printCoordinateFrame("Transformb5", Transformb5);
 
     std::vector<std::vector<double>> j5 = { { Transformb5[0][1] }, { Transformb5[1][1] }, { Transformb5[2][1] } };
     std::vector<std::vector<double>> i5 = { { Transformb5[0][0] }, { Transformb5[1][0] }, { Transformb5[2][0] } };
@@ -571,7 +571,7 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     std::vector<std::vector<double>> Transform56;
     createTransformationMatrix(C5_6, multiplyMatrices(C5_6, { {0.0}, {l8}, {0.0} }), Transform56);
     Transformb6 = multiplyMatrices(Transformb5, Transform56);
-    printCoordinateFrame("Transformb6", Transformb6);
+    //printCoordinateFrame("Transformb6", Transformb6);
 
     return { Transformb6[0][3], Transformb6[1][3], Transformb6[2][3] };
 }

@@ -18,7 +18,8 @@
 #include <thread>
 #include <windows.h>
 
-#define SHM_NAME "encoder_shm"
+#define ENCODER_SHM_NAME "encoder_shm"  // Shared memory for encoder positions (Python writes, C++ reads)
+#define TORQUE_SHM_NAME "torque_shm"    // Shared memory for torque commands (C++ writes, Python reads)
 #define SHM_SIZE 4  // 4 bytes for float
 
 // kinematics header file
@@ -70,24 +71,61 @@ int main(int argc, char* argv[])
     t_int samples_read = 0;
     t_task task;
 
-    HANDLE hMapFile = nullptr;
+    // Create shared memory for torque commands (C++ writes)
+    HANDLE hTorqueMapFile = CreateFileMapping(
+        INVALID_HANDLE_VALUE,  // Use the paging file
+        nullptr,              // Default security
+        PAGE_READWRITE,       // Read/write access
+        0,                    // Maximum object size (high-order DWORD)
+        SHM_SIZE,             // Maximum object size (low-order DWORD)
+        TORQUE_SHM_NAME       // Name of mapping object
+    );
 
-    // Keep trying until shared memory is available
-    while (hMapFile == nullptr) {
-        hMapFile = OpenFileMappingA(FILE_MAP_READ, FALSE, SHM_NAME);
-        if (!hMapFile) {
-            std::cerr << "Waiting for shared memory to be created..." << std::endl;
+    if (hTorqueMapFile == nullptr) {
+        std::cerr << "Failed to create torque shared memory: " << GetLastError() << std::endl;
+        return 1;
+    }
+
+    // Map the torque shared memory
+    void* pTorqueBuf = MapViewOfFile(
+        hTorqueMapFile,       // Handle to map object
+        FILE_MAP_ALL_ACCESS,  // Read/write permission
+        0,
+        0,
+        SHM_SIZE
+    );
+
+    if (pTorqueBuf == nullptr) {
+        std::cerr << "Failed to map torque shared memory: " << GetLastError() << std::endl;
+        CloseHandle(hTorqueMapFile);
+        return 1;
+    }
+
+    // Open shared memory for encoder positions (Python writes, C++ reads)
+    HANDLE hEncoderMapFile = nullptr;
+    while (hEncoderMapFile == nullptr) {
+        hEncoderMapFile = OpenFileMappingA(FILE_MAP_READ, FALSE, ENCODER_SHM_NAME);
+        if (!hEncoderMapFile) {
+            std::cerr << "Waiting for encoder shared memory to be created..." << std::endl;
             std::this_thread::sleep_for(std::chrono::milliseconds(500));  // Retry every 500ms
         }
     }
 
-    std::cout << "Shared memory opened!" << std::endl;
+    std::cout << "Encoder shared memory opened!" << std::endl;
 
-    // Map shared memory
-    void* pBuf = MapViewOfFile(hMapFile, FILE_MAP_READ, 0, 0, SHM_SIZE);
-    if (!pBuf) {
-        std::cerr << "Failed to map shared memory" << std::endl;
-        CloseHandle(hMapFile);
+    // Map the encoder shared memory
+    void* pEncoderBuf = MapViewOfFile(
+        hEncoderMapFile,      // Handle to map object
+        FILE_MAP_READ,        // Read-only permission
+        0,
+        0,
+        SHM_SIZE
+    );
+
+    if (pEncoderBuf == nullptr) {
+        std::cerr << "Failed to map encoder shared memory: " << GetLastError() << std::endl;
+        CloseHandle(hEncoderMapFile);
+        CloseHandle(hTorqueMapFile);
         return 1;
     }
 
@@ -103,9 +141,7 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    //std::cout << "Position Sensing.\n";
-
-    //Set encoder count to 0
+    // Set encoder count to 0
     result = hil_set_encoder_counts(board, encoder_channels.data(), encoder_channels.size(), counts.data());
     if (result < 0) {
         msg_get_error_message(nullptr, result, &message[0], message.size());
@@ -113,73 +149,33 @@ int main(int argc, char* argv[])
         hil_close(board);
         return 1;
     }
-   
 
-    //// Set output voltage to send to analog out
-    //for (int i = 0; i < NUM_CHANNELS; i++) {
-    //    voltages[NUM_CHANNELS - i] = 1.0; // Set channel 0 to 1V
-    //}
-
-    //// Write voltage to analog out
-    //result = hil_write_analog(board, channels, NUM_CHANNELS, voltages);
-    //if (result < 0) {
-    //    msg_get_error_message(nullptr, result, &message[0], message.size());
-    //    std::cerr << "Unable to write channels. " << message << " Error " << -result << ".\n";
-    //}
-
-    //std::vector<double> transformedXYZ = computeTransformedXYZ(
-    //    90.0, 45.0, 135.0, 90.0, 45.0, 135.0, 0.0);
-
-    //// Print the transformed coordinates
-    //std::cout << "Transformed XYZ: [";
-    //for (size_t i = 0; i < transformedXYZ.size(); ++i) {
-    //    std::cout << transformedXYZ[i];
-    //    if (i < transformedXYZ.size() - 1) std::cout << ", ";
-    //}
-    //std::cout << "]\n";
-
-    // Read encoder value in a loop
+    // Main loop
     while (true) {
+        // Read encoder values
         result = hil_read_encoder(board, channels, NUM_CHANNELS, counts.data());
         if (result < 0) {
             msg_get_error_message(nullptr, result, &message[0], message.size());
-            std::cerr << "Error: Unable to read channel 0. " << message << " (Error " << -result << ")\n";
+            std::cerr << "Error: Unable to read encoder values. " << message << " (Error " << -result << ")\n";
             break;
         }
-        
 
-        if (first_reading) {
-            initial_count = counts[0];
-            first_reading = false;
-        }
+        // Convert encoder counts to degrees
         for (int i = 0; i < NUM_CHANNELS; i++) {
             degrees[i] = static_cast<double>(counts[i]) * (360.0 / (5000.0 * 4.0));
-
         }
 
-        degrees[0] = degrees[0] + 90;
-        degrees[1] = degrees[1];
-        degrees[2] = degrees[2] + 180;
-        degrees[3] = 90 - degrees[3];
-        degrees[4] = degrees[4];
-        degrees[5] = degrees[5] + 180;
-
+        // Print encoder values
         for (int i = 0; i < NUM_CHANNELS; i++) {
             std::cout << "ENC #" << i << ": " << degrees[i] << " degrees, " << counts[i] << " counts\n";
         }
 
-        // Read the float value from shared memory
+        // Read the encoder position from shared memory
         float encoder_position;
-        std::memcpy(&encoder_position, pBuf, sizeof(float));
-
-        std::cout << "Encoder Position: " << encoder_position << std::endl;
-
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        //degrees[0] = degrees[0] + 90;
+        std::memcpy(&encoder_position, pEncoderBuf, sizeof(float));
+        std::cout << "Encoder Position: " << encoder_position << " degrees" << std::endl;
 
         // Call computeTransformedXYZ with 6 encoder angles and 1 EE encoder (set to 0)
-        //std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q2,
-        //double theta1p, double theta2p, double q2p, double theta4)
         std::vector<double> transformedXYZ = computeTransformedXYZ(
             degrees[0] + 90, degrees[1] + 45, degrees[2] + 135, degrees[3] + 90, degrees[4] + 45, degrees[5] + 135, encoder_position);
 
@@ -192,30 +188,32 @@ int main(int argc, char* argv[])
         std::cout << "]\n";
         std::this_thread::sleep_for(1s);
 
-        //
-
-
-
-        ////Position Control Forward Kinematics Function
-        //std::tuple<int, int, int> result = fKinematics(degrees);
-
-        //// Get values from the tuple
-        //int x, y, z;
-        //std::tie(x, y, z) = result;
-        //std::cout << "x: " << x << ", y: " << y << ", z: " << z << std::endl;
-
-        std::cout << "]\n";
-        // Check for 'q' key press (non-blocking)
-        if (_kbhit()) { // Check if a key is pressed
+        // Check for 't' key press (non-blocking)
+        if (_kbhit()) {
             char key = _getch(); // Get the pressed key
-            if (key == 'q' || key == 'Q') {
-                break; // Exit the loop if 'q' is pressed
+            if (key == 't' || key == 'T') {
+                // Prompt for torque input
+                float torque_command;
+                std::cout << "Enter torque command (keep under 0.038Nm): ";
+                std::cin >> torque_command;9
+
+                // Write the torque command to shared memory
+                std::memcpy(pTorqueBuf, &torque_command, sizeof(float));
+                std::cout << "Torque command written to shared memory: " << torque_command << std::endl;
             }
         }
+
+        // Sleep for a short time to avoid busy-waiting
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
+    // Cleanup
+    UnmapViewOfFile(pTorqueBuf);
+    UnmapViewOfFile(pEncoderBuf);
+    CloseHandle(hTorqueMapFile);
+    CloseHandle(hEncoderMapFile);
 
-    // Cleanup: Set voltage to 0V and close the board
+    // Set voltage to 0V and close the board
     for (int i = 0; i < NUM_CHANNELS; i++) {
         voltages[i] = 0.0;
     }
