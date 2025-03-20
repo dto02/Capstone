@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\derek\OneDrive - UBC\YEAR 4\MECH 458\Capstone Github\Capstone\Nicholas Demo Script\hil_read_encoder_example\x64\Debug\singleMotorProportionalControl.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Program Files\Quanser\Quanser SDK\include\hil.h</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
