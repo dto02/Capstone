@@ -1,0 +1,7 @@
+﻿  KinematicsAndJacobian.cpp
+C:\Users\nicho\OneDrive\Documents\GitHub\Capstone\KinematicsAndJacobian\KinematicsAndJacobian\KinematicsAndJacobian.cpp(218,24): warning C4101: 'roll': unreferenced local variable
+C:\Users\nicho\OneDrive\Documents\GitHub\Capstone\KinematicsAndJacobian\KinematicsAndJacobian\KinematicsAndJacobian.cpp(218,17): warning C4101: 'pitch': unreferenced local variable
+C:\Users\nicho\OneDrive\Documents\GitHub\Capstone\KinematicsAndJacobian\KinematicsAndJacobian\KinematicsAndJacobian.cpp(218,12): warning C4101: 'yaw': unreferenced local variable
+  KinematicsAndJacobian.vcxproj -> C:\Users\nicho\OneDrive\Documents\GitHub\Capstone\KinematicsAndJacobian\x64\Debug\KinematicsAndJacobian.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
