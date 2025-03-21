@@ -220,7 +220,7 @@ std::vector<double> computeTransformedXYZ(double theta1, double theta2, double q
     // Compute Euler Angles
     std::vector<double> eulerAngles = computeEulerAngles(Transformb6);
 
-    return { Transformb6[0][3], Transformb6[1][3], Transformb6[2][3], eulerAngles[0], eulerAngles[1], eulerAngles[2] };
+    return { Transformb6[0][3], Transformb6[1][3], Transformb6[2][3], eulerAngles[2], eulerAngles[1], eulerAngles[0] };
 }
 
 // Function to compute the T7 matrix
@@ -437,9 +437,9 @@ int main()
 
     // Display results
     std::cout << "Rotation Angles:" << std::endl;
-    std::cout << "Yaw (Z-axis): " << result[3] << " degrees" << std::endl;
+    std::cout << "Roll (X-axis): " << result[3] << " degrees" << std::endl;
     std::cout << "Pitch (Y-axis): " << result[4] << " degrees" << std::endl;
-    std::cout << "Roll (X-axis): " << result[5] << " degrees" << "\n" << std::endl;
+    std::cout << "Yaw (Z-axis): " << result[5] << " degrees" << "\n" << std::endl;
 
     // Define a 6x1 wrench vector (Fx, Fy, Fz, Tx, Ty, Tz)
     std::vector<double> W = { 2, 3, 0, 0, 0, 0.2 };
